@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta — Controle Financeiro · Clínica de Olhos Santo André</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green-deep:    #0d4a3a;
+    --green-mid:     #1a6b52;
+    --green-brand:   #237358;
+    --green-light:   #2e9472;
+    --green-pale:    #e5f2ec;
+    --cream:         #f8f5ef;
+    --dark:          #111a14;
+    --text:          #2a3529;
+    --muted:         #607060;
+    --gold:          #c9a96e;
+    --white:         #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    background: var(--green-deep);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.06;
+    background: var(--white);
+    pointer-events: none;
+  }
+  .hero-bg-circle.c1 { width: 700px; height: 700px; top: -200px; right: -150px; }
+  .hero-bg-circle.c2 { width: 400px; height: 400px; bottom: -100px; left: -80px; }
+
+  .hero-line {
+    position: absolute;
+    left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  }
+  .hero-line.l1 { top: 30%; }
+  .hero-line.l2 { top: 65%; }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 48px;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 100px;
+    padding: 8px 18px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 36px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.1s forwards;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 7vw, 90px);
+    font-weight: 300;
+    line-height: 1.02;
+    color: var(--white);
+    opacity: 0;
+    animation: fadeUp 0.8s 0.25s forwards;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-subtitle {
+    margin-top: 28px;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.62);
+    max-width: 540px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+
+  .hero-cta-row {
+    margin-top: 52px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.55s forwards;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--gold);
+    color: var(--dark);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 16px 32px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: #dbbf82; transform: translateY(-2px); }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.7);
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 2px;
+    transition: color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--white); }
+
+  .hero-stats {
+    margin-top: 80px;
+    display: flex;
+    gap: 56px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.7s forwards;
+  }
+
+  .hero-stat-item strong {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .hero-stat-item span {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-top: 6px;
+    display: block;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeUp 0.8s 1s forwards;
+  }
+
+  .hero-scroll span {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 0.7; transform: scaleY(1.1); }
+  }
+
+  /* ─── PROBLEM ───────────────────────────────── */
+  .problem {
+    background: var(--cream);
+    padding: 120px 48px;
+  }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--green-brand);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4.5vw, 56px);
+    font-weight: 400;
+    line-height: 1.12;
+    color: var(--dark);
+  }
+
+  .section-title em { font-style: italic; color: var(--green-brand); }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 72px;
+    background: rgba(0,0,0,0.06);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .problem-card {
+    background: var(--white);
+    padding: 48px 40px;
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .problem-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--green-brand);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+    transform-origin: left;
+  }
+
+  .problem-card:hover::after { transform: scaleX(1); }
+  .problem-card:hover { background: #fafcfa; }
+
+  .problem-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    font-weight: 300;
+    color: rgba(35,115,88,0.08);
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  .problem-icon {
+    width: 48px; height: 48px;
+    background: var(--green-pale);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    font-size: 22px;
+  }
+
+  .problem-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 12px;
+  }
+
+  .problem-card p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  /* ─── SOLUTION ──────────────────────────────── */
+  .solution {
+    background: var(--dark);
+    padding: 120px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .solution::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(35,115,88,0.18) 0%, transparent 60%);
+  }
+
+  .solution-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .solution-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: end;
+    margin-bottom: 72px;
+  }
+
+  .solution-header .section-title { color: var(--white); }
+  .solution-header .section-label { color: var(--gold); }
+
+  .solution-desc {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.55);
+    align-self: end;
+  }
+
+  .deliverables {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .deliverable {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    padding: 44px 36px;
+    transition: border-color 0.3s, background 0.3s;
+  }
+
+  .deliverable:hover {
+    border-color: rgba(201,169,110,0.3);
+    background: rgba(255,255,255,0.06);
+  }
+
+  .deliverable-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,169,110,0.35);
+    border-radius: 100px;
+    padding: 5px 14px;
+    margin-bottom: 28px;
+  }
+
+  .deliverable h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 16px;
+    line-height: 1.15;
+  }
+
+  .deliverable p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 28px;
+  }
+
+  .deliverable-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .deliverable-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.5;
+  }
+
+  .deliverable-list li::before {
+    content: '✓';
+    color: var(--green-light);
+    font-size: 13px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ─── PROCESS ───────────────────────────────── */
+  .process {
+    background: var(--green-pale);
+    padding: 120px 48px;
+  }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    align-items: center;
+    margin-top: 72px;
+  }
+
+  .process-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .process-step {
+    display: flex;
+    gap: 24px;
+    position: relative;
+    padding-bottom: 40px;
+  }
+
+  .process-step:last-child { padding-bottom: 0; }
+
+  .step-line-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .step-dot {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--green-brand);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--white);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-connector {
+    width: 1px;
+    flex: 1;
+    background: rgba(35,115,88,0.2);
+    margin-top: 4px;
+  }
+
+  .process-step:last-child .step-connector { display: none; }
+
+  .step-content h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 8px;
+    padding-top: 8px;
+  }
+
+  .step-content p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+
+  .process-visual {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 48px;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.07);
+    position: relative;
+  }
+
+  .process-visual-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green-brand);
+    margin-bottom: 24px;
+  }
+
+  .timeline-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .tl-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .tl-label {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--muted);
+    text-align: right;
+  }
+
+  .tl-track {
+    height: 8px;
+    background: var(--green-pale);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+
+  .tl-fill {
+    height: 100%;
+    border-radius: 100px;
+    background: linear-gradient(90deg, var(--green-mid), var(--green-light));
+    animation: growBar 1.2s ease-out forwards;
+    transform-origin: left;
+    transform: scaleX(0);
+  }
+
+  @keyframes growBar {
+    to { transform: scaleX(1); }
+  }
+
+  .tl-fill.w1 { width: 25%; animation-delay: 0.1s; }
+  .tl-fill.w2 { width: 55%; animation-delay: 0.3s; }
+  .tl-fill.w3 { width: 75%; animation-delay: 0.5s; }
+  .tl-fill.w4 { width: 100%; animation-delay: 0.7s; }
+
+  .deadline-badge {
+    margin-top: 32px;
+    background: var(--green-pale);
+    border-radius: 10px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .deadline-icon { font-size: 24px; }
+
+  .deadline-badge strong {
+    display: block;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--dark);
+  }
+
+  .deadline-badge span {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  /* ─── PRICING ───────────────────────────────── */
+  .pricing {
+    background: var(--cream);
+    padding: 120px 48px;
+  }
+
+  .pricing-wrap {
+    max-width: 900px;
+    margin: 72px auto 0;
+  }
+
+  .pricing-card {
+    background: var(--green-deep);
+    border-radius: 20px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+  }
+
+  .pricing-left {
+    padding: 64px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pricing-left::before {
+    content: '';
+    position: absolute;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    top: -100px; left: -80px;
+  }
+
+  .pricing-amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .pricing-currency {
+    font-size: 28px;
+    vertical-align: super;
+    font-weight: 400;
+  }
+
+  .pricing-desc {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+    margin-bottom: 36px;
+  }
+
+  .pricing-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(201,169,110,0.15);
+    border: 1px solid rgba(201,169,110,0.3);
+    border-radius: 100px;
+    padding: 8px 16px;
+    font-size: 12px;
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  .pricing-right {
+    background: rgba(255,255,255,0.04);
+    padding: 64px 56px;
+  }
+
+  .pricing-right h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 28px;
+  }
+
+  .include-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .include-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.5;
+  }
+
+  .check-circle {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: rgba(46,148,114,0.25);
+    border: 1px solid rgba(46,148,114,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 11px;
+    color: var(--green-light);
+  }
+
+  /* ─── ABOUT ─────────────────────────────────── */
+  .about {
+    background: var(--white);
+    padding: 120px 48px;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 80px;
+    align-items: center;
+    margin-top: 72px;
+  }
+
+  .about-photo-wrap {
+    position: relative;
+  }
+
+  .about-photo-bg {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--green-pale);
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .about-initials {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 96px;
+    font-weight: 300;
+    color: var(--green-brand);
+    opacity: 0.3;
+  }
+
+  .about-badge {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    background: var(--green-brand);
+    border-radius: 12px;
+    padding: 20px 24px;
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+    max-width: 180px;
+    box-shadow: 0 12px 40px rgba(35,115,88,0.35);
+  }
+
+  .about-badge strong { display: block; font-size: 15px; margin-bottom: 4px; }
+
+  .about-content {}
+  .about-content .section-label { color: var(--green-brand); }
+  .about-content .section-title { margin-bottom: 24px; }
+
+  .about-text {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  .expertise-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 32px;
+  }
+
+  .chip {
+    background: var(--green-pale);
+    border-radius: 100px;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--green-deep);
+  }
+
+  /* ─── CTA ───────────────────────────────────── */
+  .cta {
+    background: var(--green-brand);
+    padding: 120px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.08) 0%, transparent 60%);
+  }
+
+  .cta-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+
+  .cta-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 20px;
+  }
+
+  .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 5vw, 62px);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .cta-title em { font-style: italic; }
+
+  .cta-sub {
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+    margin-bottom: 48px;
+  }
+
+  .cta-contacts {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .cta-contact {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--white);
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 8px;
+    padding: 16px 24px;
+    transition: background 0.2s, transform 0.2s;
+    font-size: 15px;
+    font-weight: 400;
+  }
+
+  .cta-contact:hover {
+    background: rgba(255,255,255,0.18);
+    transform: translateY(-3px);
+  }
+
+  .cta-contact-icon {
+    width: 36px; height: 36px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+
+  /* ─── FOOTER ────────────────────────────────── */
+  footer {
+    background: var(--dark);
+    padding: 40px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  footer span {
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.5);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .footer-brand::before {
+    content: '';
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--green-light);
+  }
+
+  /* ─── ANIMATIONS ────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+  .reveal-d1 { transition-delay: 0.1s; }
+  .reveal-d2 { transition-delay: 0.22s; }
+  .reveal-d3 { transition-delay: 0.34s; }
+
+  /* ─── RESPONSIVE ────────────────────────────── */
+  @media (max-width: 900px) {
+    .problem-grid,
+    .deliverables,
+    .solution-header,
+    .process-grid,
+    .pricing-card,
+    .about-grid { grid-template-columns: 1fr; }
+    .hero-inner, .problem, .solution, .process, .pricing, .about, .cta { padding-left: 24px; padding-right: 24px; }
+    footer { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg-circle c1"></div>
+  <div class="hero-bg-circle c2"></div>
+  <div class="hero-line l1"></div>
+  <div class="hero-line l2"></div>
+
+  <div class="hero-inner">
+    <div class="hero-tag">Proposta Comercial · Abril 2026</div>
+
+    <h1 class="hero-title">
+      Controle<br>
+      Financeiro<br>
+      <em>com clareza</em>
+    </h1>
+
+    <p class="hero-subtitle">
+      DFC e DRE estruturados especialmente para a Clínica de Olhos Santo André — visibilidade total sobre entradas, saídas e lucratividade real.
+    </p>
+
+    <div class="hero-cta-row">
+      <a href="#cta" class="btn-primary">
+        Quero iniciar o projeto
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#solucao" class="btn-ghost">Ver a proposta ↓</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat-item">
+        <strong>3×</strong>
+        <span>Mais segurança nas decisões</span>
+      </div>
+      <div class="hero-stat-item">
+        <strong>20</strong>
+        <span>Dias úteis de entrega</span>
+      </div>
+      <div class="hero-stat-item">
+        <strong>3</strong>
+        <span>Entregáveis inclusos</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══ PROBLEM ════════════════════════════════════ -->
+<section class="problem">
+  <div class="section-inner">
+    <p class="section-label reveal">O Diagnóstico</p>
+    <h2 class="section-title reveal reveal-d1">
+      Gestão financeira<br>
+      sem visibilidade<br>
+      <em>custa caro</em>
+    </h2>
+
+    <div class="problem-grid">
+      <div class="problem-card reveal">
+        <div class="problem-num">01</div>
+        <div class="problem-icon">💸</div>
+        <h3>Fluxo de caixa desorganizado</h3>
+        <p>Sem um DFC estruturado, entradas e saídas se misturam, dificultando a previsão de saldo e o planejamento de investimentos.</p>
+      </div>
+      <div class="problem-card reveal reveal-d1">
+        <div class="problem-num">02</div>
+        <div class="problem-icon">📊</div>
+        <h3>Dificuldade em medir lucro real</h3>
+        <p>Sem uma DRE, não há como separar receita bruta de lucro líquido — e decisões tomadas com base em números incorretos custam caro.</p>
+      </div>
+      <div class="problem-card reveal reveal-d2">
+        <div class="problem-num">03</div>
+        <div class="problem-icon">🔍</div>
+        <h3>Decisões sem dados confiáveis</h3>
+        <p>Gestores que não têm dashboards financeiros tomam decisões baseadas em intuição, não em evidência — aumentando o risco de erros.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SOLUTION ═══════════════════════════════════ -->
+<section class="solution" id="solucao">
+  <div class="solution-inner">
+    <div class="solution-header">
+      <div>
+        <p class="section-label reveal">A Solução</p>
+        <h2 class="section-title reveal reveal-d1">
+          O que será<br>
+          <em>entregue</em>
+        </h2>
+      </div>
+      <p class="solution-desc reveal reveal-d2">
+        Três entregáveis integrados, desenvolvidos no Google Planilhas com foco na realidade operacional de uma clínica oftalmológica — sem complexidade desnecessária, com resultado imediato.
+      </p>
+    </div>
+
+    <div class="deliverables">
+      <div class="deliverable reveal">
+        <div class="deliverable-badge">Entregável 01</div>
+        <h3>DFC — Demonstrativo de Fluxo de Caixa</h3>
+        <p>Controle completo de entradas e saídas, com projeção mensal e cálculo automático de saldo.</p>
+        <ul class="deliverable-list">
+          <li>Categorização de receitas por procedimento</li>
+          <li>Mapeamento de despesas fixas e variáveis</li>
+          <li>Projeção de saldo para os próximos meses</li>
+          <li>Alertas automáticos de caixa negativo</li>
+        </ul>
+      </div>
+
+      <div class="deliverable reveal reveal-d1">
+        <div class="deliverable-badge">Entregável 02</div>
+        <h3>DRE — Demonstrativo de Resultado</h3>
+        <p>Apuração do lucro líquido real — da receita bruta ao resultado final, com visibilidade total das margens.</p>
+        <ul class="deliverable-list">
+          <li>Receita bruta por categoria de serviço</li>
+          <li>Deduções, custos e despesas operacionais</li>
+          <li>Cálculo automático de margem líquida</li>
+          <li>Comparativo mensal e anual</li>
+        </ul>
+      </div>
+
+      <div class="deliverable reveal reveal-d2">
+        <div class="deliverable-badge">Entregável 03</div>
+        <h3>Treinamento + Suporte pós-entrega</h3>
+        <p>A ferramenta só gera valor quando a equipe sabe usá-la. Por isso o treinamento prático já está incluso.</p>
+        <ul class="deliverable-list">
+          <li>Sessão presencial com a equipe financeira</li>
+          <li>Guia de lançamentos e uso das planilhas</li>
+          <li>Suporte pós-entrega para dúvidas</li>
+          <li>Ajustes nas primeiras semanas de uso</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROCESS ════════════════════════════════════ -->
+<section class="process">
+  <div class="section-inner">
+    <p class="section-label reveal">Como Funciona</p>
+    <h2 class="section-title reveal reveal-d1">
+      Processo em<br>
+      <em>4 etapas claras</em>
+    </h2>
+
+    <div class="process-grid">
+      <div class="process-steps reveal">
+        <div class="process-step">
+          <div class="step-line-wrap">
+            <div class="step-dot">1</div>
+            <div class="step-connector"></div>
+          </div>
+          <div class="step-content">
+            <h4>Levantamento de dados</h4>
+            <p>Entendimento da rotina financeira da clínica, mapeamento das principais receitas, despesas e fluxos existentes.</p>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="step-line-wrap">
+            <div class="step-dot">2</div>
+            <div class="step-connector"></div>
+          </div>
+          <div class="step-content">
+            <h4>Modelagem das planilhas</h4>
+            <p>Criação dos modelos de DFC e DRE no Google Planilhas, com organização de categorias adaptada à realidade da clínica.</p>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="step-line-wrap">
+            <div class="step-dot">3</div>
+            <div class="step-connector"></div>
+          </div>
+          <div class="step-content">
+            <h4>Revisão e ajustes</h4>
+            <p>Validação com a gestão da clínica e refinamento do modelo conforme as necessidades práticas identificadas.</p>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="step-line-wrap">
+            <div class="step-dot">4</div>
+          </div>
+          <div class="step-content">
+            <h4>Entrega + Treinamento</h4>
+            <p>Orientação prática para a equipe sobre uso das ferramentas e suporte nas primeiras semanas de operação.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="process-visual reveal reveal-d1">
+        <p class="process-visual-label">Estimativa de prazo — 20 dias úteis</p>
+        <div class="timeline-bar">
+          <div class="tl-row">
+            <span class="tl-label">Levantamento</span>
+            <div class="tl-track"><div class="tl-fill w1"></div></div>
+          </div>
+          <div class="tl-row">
+            <span class="tl-label">Modelagem</span>
+            <div class="tl-track"><div class="tl-fill w2"></div></div>
+          </div>
+          <div class="tl-row">
+            <span class="tl-label">Revisão</span>
+            <div class="tl-track"><div class="tl-fill w3"></div></div>
+          </div>
+          <div class="tl-row">
+            <span class="tl-label">Entrega</span>
+            <div class="tl-track"><div class="tl-fill w4"></div></div>
+          </div>
+        </div>
+
+        <div class="deadline-badge">
+          <div class="deadline-icon">📅</div>
+          <div>
+            <strong>Até 20 dias úteis</strong>
+            <span>A partir do início das atividades e envio das informações necessárias</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRICING ════════════════════════════════════ -->
+<section class="pricing">
+  <div class="section-inner">
+    <p class="section-label reveal">Investimento</p>
+    <h2 class="section-title reveal reveal-d1">
+      Um valor justo por<br>
+      <em>resultado concreto</em>
+    </h2>
+
+    <div class="pricing-wrap">
+      <div class="pricing-card reveal">
+        <div class="pricing-left">
+          <div class="pricing-amount">
+            <span class="pricing-currency">R$</span>1.500
+          </div>
+          <p class="pricing-desc">
+            Pagamento único. Sem mensalidades ou taxas escondidas.
+          </p>
+          <div class="pricing-tag">
+            ✦ Pacote completo DFC + DRE + Treinamento
+          </div>
+        </div>
+
+        <div class="pricing-right">
+          <h4>O que está incluso</h4>
+          <ul class="include-list">
+            <li>
+              <div class="check-circle">✓</div>
+              Planilha DFC no Google Planilhas com cálculos automáticos
+            </li>
+            <li>
+              <div class="check-circle">✓</div>
+              Planilha DRE completa com apuração de lucro líquido
+            </li>
+            <li>
+              <div class="check-circle">✓</div>
+              Treinamento presencial com a equipe financeira
+            </li>
+            <li>
+              <div class="check-circle">✓</div>
+              Suporte pós-entrega para dúvidas e ajustes
+            </li>
+            <li>
+              <div class="check-circle">✓</div>
+              Guia de uso e orientações para lançamentos
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ══════════════════════════════════════ -->
+<section class="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-photo-wrap reveal">
+        <div class="about-photo-bg">
+          <div class="about-initials">DM</div>
+        </div>
+        <div class="about-badge">
+          <strong>Davyson Maximiano</strong>
+          Engenheiro Biomédico & Especialista em Gestão de Projetos
+        </div>
+      </div>
+
+      <div class="about-content">
+        <p class="section-label reveal">Quem vai executar</p>
+        <h2 class="section-title reveal reveal-d1">Sobre<br><em>Davyson Maximiano</em></h2>
+
+        <p class="about-text reveal reveal-d2">
+          Engenheiro Biomédico com especialização em Gestão de Projetos, Davyson une o conhecimento técnico da área da saúde com a capacidade de criar ferramentas financeiras práticas e funcionais.
+        </p>
+        <p class="about-text reveal reveal-d2">
+          Sua abordagem combina domínio em Google Planilhas com foco em resultados aplicáveis — sem ferramentas complexas que a equipe não vai usar no dia a dia.
+        </p>
+
+        <div class="expertise-chips reveal">
+          <span class="chip">Experiência em saúde</span>
+          <span class="chip">Google Planilhas</span>
+          <span class="chip">Gestão de Projetos</span>
+          <span class="chip">Controle Financeiro</span>
+          <span class="chip">DFC & DRE</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ════════════════════════════════════════ -->
+<section class="cta" id="cta">
+  <div class="cta-inner">
+    <p class="cta-eyebrow">Próximos Passos</p>
+    <h2 class="cta-title">
+      Vamos avançar com<br>
+      <em>o projeto?</em>
+    </h2>
+    <p class="cta-sub">
+      Agende o alinhamento inicial para começarmos a implementação. Em até 20 dias úteis, sua clínica terá controle financeiro completo.
+    </p>
+
+    <div class="cta-contacts">
+      <a href="https://wa.me/5584991016281" class="cta-contact">
+        <div class="cta-contact-icon">📱</div>
+        (84) 99101-6281
+      </a>
+      <a href="mailto:Davyson.Maximiano@gmail.com" class="cta-contact">
+        <div class="cta-contact-icon">✉️</div>
+        Davyson.Maximiano@gmail.com
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ══════════════════════════════════════ -->
+<footer>
+  <div class="footer-brand">Davyson Maximiano</div>
+  <span>Proposta elaborada em Abril de 2026</span>
+  <span>Clínica de Olhos Santo André · Confidencial</span>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
